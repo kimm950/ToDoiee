@@ -3,16 +3,17 @@ import styled from 'styled-components'
 import Form from './Form'
 import ItemList from './ItemList'
 import DeleteModal from './DeleteModal'
+import colors from './colors'
 
 const TodoListTemplatePanel = styled.div`
   width: 30vw;
   min-width: 340px;
-  box-shadow: 0px 1px 6px 0px rgba(51,51,51,0.3);
+  box-shadow: ${colors.drop_shadow};
   min-height: 30vh;
   margin: 0 auto;
   margin-top: 5%;
-  border-radius: 5px;
-  background-color: #fff;
+  border-radius: ${colors.radius};
+  background-color: ${colors.white};
 
   .title{
     display: flex;
@@ -22,9 +23,9 @@ const TodoListTemplatePanel = styled.div`
     font-weight: bold;
     font-family: Helvetica;
     font-size: 24px;
-    background-color: #FF461E;
-    color: #FFF;
-    box-shadow: 0px 1px 6px 0px rgba(51,51,51,0.3);
+    background-color: ${colors.main_red};
+    color: ${colors.white};
+    box-shadow: ${colors.drop_shadow};
     border-radius: 5px 5px 0px 0px;
   }
 
@@ -59,7 +60,6 @@ class TodoListTemplate extends Component {
   handleChange = (e) => {
     this.setState({ input: e.target.value });
   }
-
 
   createAction = () => {
     const { input, todos } = this.state;
@@ -140,8 +140,13 @@ class TodoListTemplate extends Component {
             />
           </div>
         </TodoListTemplatePanel>
-        {
-          isDeleteModalOpen && (<DeleteModal deleteId={this.state.deleteId} onCancel={this.toggleDeleteModal} onConfirm={this.deleteAction} />)
+        {isDeleteModalOpen && (
+          <DeleteModal
+            deleteId={this.state.deleteId}
+            onCancel={this.toggleDeleteModal}
+            onConfirm={this.deleteAction}
+          />
+        )
         }
       </Fragment>
     );

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import colors from './colors'
 
 const FormContainer = styled.div`
   display: flex;
@@ -13,17 +14,17 @@ const FormContainer = styled.div`
     font-size: 18px;
 }
   .create-button{
-    background-color: #FF461E;
-    color: #FFF;
+    background-color: ${colors.main_red};
+    color: ${colors.white};
     border-style: none;
-    border-radius: 5px;
+    border-radius: ${colors.radius};
     width: 80px;
-    box-shadow: 0px 1px 6px 0px rgba(51,51,51,0.3);
+    box-shadow: ${colors.drop_shadow};
     font-size: 18px;
     transition: all 0.2s;
     &:hover{
-      background-color: #FFF;
-      color: #FF461E;
+      background-color: ${colors.white};
+      color: ${colors.main_red};
       box-shadow: none;
       border: 0.5px solid;
     }

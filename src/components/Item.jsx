@@ -1,16 +1,17 @@
 import React, { Component } from "react"
 import styled from "styled-components"
+import colors from './colors'
 
 const ItemContainer = styled.div`
   padding: 20px;
   display: flex;
-  border-radius: 5px;
+  border-radius: ${colors.radius};
   transition: all 0.2s;
   user-select: none;
   border-bottom: 1px dashed rgba(51,51,51,0.1);
   &:hover{
-    background-color: #FF461E;
-    color: #FFF;
+    background-color: ${colors.main_red};
+    color: ${colors.white};
   }
 
   &:hover .delete {
@@ -26,7 +27,7 @@ const ItemContainer = styled.div`
     opacity: 0;
     font-weight: 600;
     font-size: 24px;
-    color: #fff;
+    color: ${colors.white};
     flex: 1;
     margin-right: 10px;
   }
@@ -42,7 +43,7 @@ const ItemContainer = styled.div`
 
   .check-mark {
     line-height: 1rem;
-    color: #FF461E;
+    color: ${colors.main_red};
     font-weight: 800;
   }
 `
