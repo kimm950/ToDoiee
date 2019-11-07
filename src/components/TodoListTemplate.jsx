@@ -60,7 +60,8 @@ class TodoListTemplate extends Component {
     this.setState({ input: e.target.value });
   }
 
-  handleCreate = () => {
+
+  createAction = () => {
     const { input, todos } = this.state;
     this.setState({
       input: '', //clear the input values
@@ -78,7 +79,7 @@ class TodoListTemplate extends Component {
     }
   }
 
-  handleToggle = (id) => {
+  handleCheckMark = (id) => {
     const { todos } = this.state;
 
     const index = todos.findIndex(todo => todo.id === id);
@@ -96,8 +97,8 @@ class TodoListTemplate extends Component {
   }
 
   // toggleDeleteModal
-  handleDelete = (id) => {
-    console.log("handleDelete", id);
+  toggleDeleteModal = (id) => {
+    console.log("toggleDeleteModal", id);
     this.setState({
       isDeleteModalOpen: !this.state.isDeleteModalOpen,
       deleteId: this.state.deleteId ? null : id,
@@ -126,7 +127,7 @@ class TodoListTemplate extends Component {
             <Form
               value={input}
               onChange={this.handleChange}
-              onCreate={this.handleCreate}
+              onCreate={this.createAction}
               onKeyPress={this.handleKeyPress}
             />
           </div>
@@ -134,13 +135,13 @@ class TodoListTemplate extends Component {
             <ItemList
               todos={todos}
               deleteId={this.state.deleteId}
-              onToggle={this.handleToggle}
-              onDelete={() => this.handleDelete}
+              onToggle={this.handleCheckMark}
+              onDelete={() => this.toggleDeleteModal}
             />
           </div>
         </TodoListTemplatePanel>
         {
-          isDeleteModalOpen && (<DeleteModal deleteId={this.state.deleteId} onCancel={this.handleDelete} onConfirm={this.deleteAction} />)
+          isDeleteModalOpen && (<DeleteModal deleteId={this.state.deleteId} onCancel={this.toggleDeleteModal} onConfirm={this.deleteAction} />)
         }
       </Fragment>
     );
