@@ -12,6 +12,7 @@ const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-left: 34%;
 
   > h1 {
     margin-bottom: 60px;
@@ -21,6 +22,7 @@ const ModalContainer = styled.div`
   > button {
       background: ${colors.main_red};
       color: ${colors.white};
+      border-style: none;
       border-radius: 5px;
       width: 150px;
       height: 40px;
@@ -40,4 +42,4 @@ const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
   );
 }
 
-export default DeleteModal
+export default DeleteModal;

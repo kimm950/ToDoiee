@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import styled from "styled-components"
 import colors from './colors'
 
@@ -26,7 +26,7 @@ const ItemContainer = styled.div`
     top: 0;
     opacity: 0;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 16px;
     color: ${colors.white};
     flex: 1;
     margin-right: 10px;
@@ -69,7 +69,7 @@ class Item extends Component {
           <div className={`text ${isChecked && 'isChecked'}`}>
             <div>{text}</div>
           </div>
-          {isChecked && (<div className="check-mark">√</div>)}
+          {isChecked && (<div className="check-mark">√ Done!</div>)}
         </div>
       </ItemContainer>
     );

@@ -75,7 +75,7 @@ class TodoListTemplate extends Component {
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      this.handleCreate();
+      this.createAction();
     }
   }
 
@@ -146,8 +146,7 @@ class TodoListTemplate extends Component {
             onCancel={this.toggleDeleteModal}
             onConfirm={this.deleteAction}
           />
-        )
-        }
+        )}
       </Fragment>
     );
   };
