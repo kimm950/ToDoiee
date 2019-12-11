@@ -1,6 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import colors from './colors'
+import React from 'react';
+import styled from 'styled-components';
+import colors from './colors';
+import ModalPortal from './ModalPortal';
 
 const ModalContainer = styled.div`
   width: 30vw;
@@ -13,6 +14,8 @@ const ModalContainer = styled.div`
   align-items: center;
   text-align: center;
   margin-left: 34%;
+  position: fixed;
+  z-index: 100;
 
   > h1 {
     margin-bottom: 60px;
@@ -34,11 +37,13 @@ const ModalContainer = styled.div`
 const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
   console.log(deleteId)
   return (
-    <ModalContainer>
-      <h1>Are You Sure?</h1>
-      <button onClick={() => onCancel()}>Cancel</button>
-      <button onClick={() => onConfirm(deleteId)}>Yes</button>
-    </ModalContainer>
+    <ModalPortal>
+      <ModalContainer>
+        <h1>Are You Sure?</h1>
+        <button onClick={() => onCancel()}>Cancel</button>
+        <button onClick={() => onConfirm(deleteId)}>Yes</button>
+      </ModalContainer>
+    </ModalPortal>
   );
 }
 

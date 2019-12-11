@@ -65,7 +65,10 @@ class Item extends Component {
             onClick={(e) => {
               e.stopPropagation();
               onDelete(id)
-            }}>&times;</div>
+            }}
+          >
+            &times;
+            </div>
           <div className={`text ${isChecked && 'isChecked'}`}>
             <div>{text}</div>
           </div>
