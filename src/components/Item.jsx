@@ -14,7 +14,7 @@ const ItemContainer = styled.div`
     color: ${colors.white};
   }
 
-  &:hover .delete {
+  &:hover .delete-button {
     opacity: 1;
   }
 
@@ -22,7 +22,7 @@ const ItemContainer = styled.div`
    display: flex;
   }
 
-  .delete {
+  .delete-button {
     top: 0;
     opacity: 0;
     font-weight: 600;
@@ -61,7 +61,7 @@ class Item extends Component {
       <ItemContainer>
         <div className="item"
           onClick={() => onToggle(id)}>
-          <div className="delete"
+          <div className="delete-button"
             onClick={(e) => {
               e.stopPropagation();
               onDelete(id)
