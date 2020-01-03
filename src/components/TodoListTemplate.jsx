@@ -9,7 +9,6 @@ const TodoListTemplatePanel = styled.div`
   width: 30vw;
   min-width: 340px;
   box-shadow: ${colors.drop_shadow};
-  min-height: 30vh;
   margin: 0 auto;
   margin-top: 5%;
   border-radius: ${colors.radius};
@@ -36,7 +35,6 @@ const TodoListTemplatePanel = styled.div`
   }
 
   .children-wrapper {
-    min-height: 10vh;
     padding: 8px;
   }
 
@@ -155,7 +153,7 @@ class TodoListTemplate extends Component {
           </div>
           <div className='children-wrapper'>
             {isItemListOpen ? (
-              <div className='toggle-list' onClick={this.toggleItemList}> Open&#9660; </div>
+              <div className='toggle-list' onClick={this.toggleItemList}> Open &#9660; </div>
             ) : (
                 <>
                   <ItemList
@@ -164,7 +162,7 @@ class TodoListTemplate extends Component {
                     onToggle={this.handleCheckMark}
                     onDelete={() => this.toggleDeleteModal}
                   />
-                  <div className='toggle-list' onClick={this.toggleItemList}> Close&#9650; </div>
+                  <div className='toggle-list' onClick={this.toggleItemList}> Close &#9650; </div>
                 </>
 
               )}
