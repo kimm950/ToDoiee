@@ -15,7 +15,7 @@ const TodoListTemplatePanel = styled.div`
   border-radius: ${colors.radius};
   background-color: ${colors.white};
 
-  .title{
+  .title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,16 +29,26 @@ const TodoListTemplatePanel = styled.div`
     border-radius: 5px 5px 0px 0px;
   }
 
-  .form-wrapper{
+  .form-wrapper {
     padding: 8px;
     border-bottom: 1px dashed rgba(51,51,51,0.3);
     height: 8vh;
   }
 
-  .children-wrapper{
+  .children-wrapper {
     min-height: 10vh;
     padding: 8px;
+  }
 
+  .toggle-list {
+    justify-content: center;
+    text-align: center;
+    color: ${colors.main_red} ;
+    padding: 10px;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
   }
 `
 class TodoListTemplate extends Component {
@@ -48,11 +58,11 @@ class TodoListTemplate extends Component {
     this.state = {
       input: '',
       isDeleteModalOpen: false,
+      isItemListOpen: true,
       deleteId: null,
       todos: [
         { id: 0, text: 'Meeting with biz', isChecked: true },
         { id: 1, text: 'Mockup user-flow', isChecked: false },
-        { id: 2, text: 'Git PR review', isChecked: true },
       ]
     }
   }
@@ -62,15 +72,25 @@ class TodoListTemplate extends Component {
   }
 
   createAction = () => {
-    const { input, todos } = this.state;
-    this.setState({
-      input: '', //clear the input values
-      todos: todos.concat({
-        id: this.id++,
-        text: input,
-        isChecked: false
+    const { input, todos, isItemListOpen } = this.state;
+    if (input === '') {
+      alert("You must insert text")
+    }
+    else {
+      this.setState({
+        input: '', //clear the input values
+        todos: todos.concat({
+          id: this.id++,
+          text: input,
+          isChecked: false
+        })
       })
-    })
+    }
+    if (isItemListOpen === true) {
+      this.toggleItemList()
+    } else {
+      return false
+    }
   }
 
   handleKeyPress = (e) => {
@@ -96,7 +116,7 @@ class TodoListTemplate extends Component {
     });
   }
 
-  // toggleDeleteModal
+  // toggle DeleteModal
   toggleDeleteModal = (id) => {
     console.log("toggleDeleteModal", id);
     this.setState({
@@ -104,6 +124,8 @@ class TodoListTemplate extends Component {
       deleteId: this.state.deleteId ? null : id,
     })
   }
+  //toggle ItemList
+  toggleItemList = () => { this.setState({ isItemListOpen: !this.state.isItemListOpen }) }
 
   deleteAction = (id) => {
     console.log("deleteAction", id)
@@ -116,7 +138,7 @@ class TodoListTemplate extends Component {
 
   render() {
     console.log('state', this.state);
-    const { input, todos, isDeleteModalOpen } = this.state;
+    const { input, todos, isDeleteModalOpen, isItemListOpen } = this.state;
     return (
       <Fragment>
         <TodoListTemplatePanel>
@@ -131,13 +153,21 @@ class TodoListTemplate extends Component {
               onKeyPress={this.handleKeyPress}
             />
           </div>
-          <div className="children-wrapper">
-            <ItemList
-              todos={todos}
-              deleteId={this.state.deleteId}
-              onToggle={this.handleCheckMark}
-              onDelete={() => this.toggleDeleteModal}
-            />
+          <div className='children-wrapper'>
+            {isItemListOpen ? (
+              <div className='toggle-list' onClick={this.toggleItemList}> Open&#9660; </div>
+            ) : (
+                <>
+                  <ItemList
+                    todos={todos}
+                    deleteId={this.state.deleteId}
+                    onToggle={this.handleCheckMark}
+                    onDelete={() => this.toggleDeleteModal}
+                  />
+                  <div className='toggle-list' onClick={this.toggleItemList}> Close&#9650; </div>
+                </>
+
+              )}
           </div>
         </TodoListTemplatePanel>
         {isDeleteModalOpen && (
