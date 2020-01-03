@@ -14,14 +14,6 @@ const ItemContainer = styled.div`
     color: ${colors.white};
   }
 
-  &:hover .delete-button {
-    opacity: 1;
-  }
-
-  .item{
-   display: flex;
-  }
-
   .delete-button {
     top: 0;
     opacity: 0;
@@ -32,8 +24,22 @@ const ItemContainer = styled.div`
     margin-right: 10px;
   }
 
+&:hover .delete-button {
+    opacity: 1;
+    cursor: pointer;
+}
+
+  .item {
+   display: flex;
+  }
+
   .text {
     margin-right: 10px;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+  }
   }
 
   .isChecked {
