@@ -20,8 +20,8 @@ const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
   overflow: ${props => (props.overFlow ? 'auto' : 'unset')};
 
-  > h1 {
-    margin-bottom: 60px;
+  > h2 {
+    margin: 30px 0px 50px 0px;
     color: ${colors.main_red};
   }
 
@@ -34,6 +34,10 @@ const ModalContainer = styled.div`
       height: 40px;
       margin-right: 10px;
       box-shadow: ${colors.drop_shadow};
+      &:hover {
+        cursor: pointer;
+        box-shadow: none;
+      }
     } 
 `
 
@@ -42,7 +46,7 @@ const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
   return (
     <ModalPortal>
       <ModalContainer>
-        <h1>Are You Sure?</h1>
+        <h2>Are You Sure?</h2>
         <button onClick={() => onCancel()}>Cancel</button>
         <button onClick={() => onConfirm(deleteId)}>Yes</button>
       </ModalContainer>

@@ -21,11 +21,13 @@ const FormContainer = styled.div`
     width: 80px;
     box-shadow: ${colors.drop_shadow};
     font-size: 18px;
+    transition: all 0.2s;
     &:hover{
       background-color: ${colors.white};
       color: ${colors.main_red};
       box-shadow: none;
       border: 0.5px solid;
+      cursor: pointer;
     }
   }
 `
