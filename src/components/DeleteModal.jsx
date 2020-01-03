@@ -22,11 +22,11 @@ const ModalContainer = styled.div`
 
   > h2 {
     margin: 30px 0px 50px 0px;
-    color: ${colors.main_red};
+    color: ${colors.main};
   }
 
   > button {
-      background: ${colors.main_red};
+      background: ${colors.main};
       color: ${colors.white};
       border-style: none;
       border-radius: 5px;

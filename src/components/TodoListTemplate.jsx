@@ -22,7 +22,7 @@ const TodoListTemplatePanel = styled.div`
     font-weight: bold;
     font-family: Helvetica;
     font-size: 24px;
-    background-color: ${colors.main_red};
+    background-color: ${colors.main};
     color: ${colors.white};
     box-shadow: ${colors.drop_shadow};
     border-radius: 5px 5px 0px 0px;
@@ -41,7 +41,7 @@ const TodoListTemplatePanel = styled.div`
   .toggle-list {
     justify-content: center;
     text-align: center;
-    color: ${colors.main_red} ;
+    color: ${colors.main} ;
     padding: 10px;
     font-weight: bold;
     &:hover {

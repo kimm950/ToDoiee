@@ -10,7 +10,7 @@ const ItemContainer = styled.div`
   user-select: none;
   border-bottom: 1px dashed rgba(51,51,51,0.1);
   &:hover{
-    background-color: ${colors.main_red};
+    background-color: ${colors.main};
     color: ${colors.white};
   }
 
@@ -18,7 +18,7 @@ const ItemContainer = styled.div`
     top: 0;
     opacity: 0;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     color: ${colors.white};
     flex: 1;
     margin-right: 10px;
@@ -49,7 +49,7 @@ const ItemContainer = styled.div`
 
   .check-mark {
     line-height: 1rem;
-    color: ${colors.main_red};
+    color: ${colors.main};
     font-weight: 800;
   }
 `

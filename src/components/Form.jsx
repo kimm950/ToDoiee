@@ -14,7 +14,7 @@ const FormContainer = styled.div`
     font-size: 18px;
 }
   .create-button{
-    background-color: ${colors.main_red};
+    background-color: ${colors.main};
     color: ${colors.white};
     border-style: none;
     border-radius: ${colors.radius};
@@ -24,7 +24,7 @@ const FormContainer = styled.div`
     transition: all 0.2s;
     &:hover{
       background-color: ${colors.white};
-      color: ${colors.main_red};
+      color: ${colors.main};
       box-shadow: none;
       border: 0.5px solid;
       cursor: pointer;
