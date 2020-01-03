@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from './colors';
-import ModalPortal from './ModalPortal';
+import ModalPortal from './ModalPortal'
 
 const ModalContainer = styled.div`
   width: 30vw;
@@ -13,9 +13,12 @@ const ModalContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-left: 34%;
-  position: fixed;
+  position: absolute;
   z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: ${props => (props.overFlow ? 'auto' : 'unset')};
 
   > h1 {
     margin-bottom: 60px;

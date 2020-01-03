@@ -8,8 +8,7 @@ const DarkOverlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   top: 0;
-  z-index: 99;
-  
+  z-index: 100;
 `
 
 class ModalPortal extends Component {
