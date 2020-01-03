@@ -7,6 +7,7 @@ const Background = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
+  overflow: auto;
 `
 
 class Todoiee extends Component {
