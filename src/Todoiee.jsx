@@ -19,7 +19,7 @@ const AboutMeButton = styled.a`
   padding: 15px;
   margin: 15px;
   background-color: ${colors.main};
-  border-radius: 30px;
+  border-radius: ${colors.radius};
   transition: all .2s ease-in-out;
   box-shadow: ${colors.drop_shadow};
   text-decoration: none;

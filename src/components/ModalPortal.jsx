@@ -11,13 +11,15 @@ const DarkOverlay = styled.div`
   z-index: 100;
 `
 
+
 class ModalPortal extends Component {
 
   render() {
+    const { children, zIndex } = this.props
     return (
       <div>
-        <DarkOverlay zIndex={this.props.zIndex} />
-        {this.props.children}
+        <DarkOverlay zIndex={zIndex} />
+        {children}
       </div>
     )
   }
