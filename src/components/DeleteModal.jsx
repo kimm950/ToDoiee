@@ -42,7 +42,6 @@ const ModalContainer = styled.div`
 `
 
 const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
-  console.log(deleteId)
   return (
     <ModalPortal>
       <ModalContainer>

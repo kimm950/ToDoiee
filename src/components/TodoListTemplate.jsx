@@ -60,10 +60,7 @@ class TodoListTemplate extends Component {
       isItemListOpen: true,
       deleteId: null,
       placeholder: "Today I have to do.....",
-      todos: [
-        { id: 0, text: 'Meeting with biz', isChecked: true },
-        { id: 1, text: 'Mockup user-flow', isChecked: false },
-      ]
+      todos: []
     }
   }
 
@@ -120,26 +117,23 @@ class TodoListTemplate extends Component {
 
   // toggle DeleteModal
   toggleDeleteModal = (id) => {
-    console.log("toggleDeleteModal", id);
     this.setState({
-      isDeleteModalOpen: !this.state.isDeleteModalOpen,
       deleteId: this.state.deleteId ? null : id,
+      isDeleteModalOpen: !this.state.isDeleteModalOpen,
     })
   }
   //toggle ItemList
   toggleItemList = () => { this.setState({ isItemListOpen: !this.state.isItemListOpen }) }
 
   deleteAction = (id) => {
-    console.log("deleteAction", id)
     const { todos } = this.state;
     this.setState({
+      todos: todos.filter(todo => todo.id !== id),
       isDeleteModalOpen: !this.state.isDeleteModalOpen,
-      todos: todos.filter(todo => todo.id !== id)
     });
   }
 
   render() {
-    console.log('state', this.state);
     const { input, todos, isDeleteModalOpen, isItemListOpen, placeholder } = this.state;
     return (
       <Fragment>
@@ -160,7 +154,7 @@ class TodoListTemplate extends Component {
             {isItemListOpen ? (
               <div className='toggle-list' onClick={this.toggleItemList}> Open &#9660; </div>
             ) : (
-                <>
+                <div>
                   <ItemList
                     todos={todos}
                     deleteId={this.state.deleteId}
@@ -168,7 +162,7 @@ class TodoListTemplate extends Component {
                     onDelete={() => this.toggleDeleteModal}
                   />
                   <div className='toggle-list' onClick={this.toggleItemList}> Close &#9650; </div>
-                </>
+                </div>
 
               )}
           </div>
