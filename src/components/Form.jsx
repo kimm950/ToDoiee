@@ -32,12 +32,12 @@ const FormContainer = styled.div`
   }
 `
 
-const Form = ({ value, onChange, onCreate, onKeyPress }) => {
+const Form = ({ value, onChange, onCreate, onKeyPress, placeholder }) => {
   return (
     <FormContainer>
       <input
         className="todo-input"
-        placeholder="Today I have to do....."
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
         onKeyPress={onKeyPress}

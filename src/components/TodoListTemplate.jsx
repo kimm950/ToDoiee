@@ -56,8 +56,10 @@ class TodoListTemplate extends Component {
     this.state = {
       input: '',
       isDeleteModalOpen: false,
+      isValid: false,
       isItemListOpen: true,
       deleteId: null,
+      placeholder: "Today I have to do.....",
       todos: [
         { id: 0, text: 'Meeting with biz', isChecked: true },
         { id: 1, text: 'Mockup user-flow', isChecked: false },
@@ -66,25 +68,27 @@ class TodoListTemplate extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({ input: e.target.value });
+    this.setState({ input: e.target.value, isValid: true });
   }
 
   createAction = () => {
     const { input, todos, isItemListOpen } = this.state;
-    if (input === '') {
-      alert("You must insert text")
+    const isValid = input.trim();
+    if (!isValid) {
+      this.setState({ input: '', placeholder: "You must insert text" })
     }
     else {
       this.setState({
         input: '', //clear the input values
+        placeholder: "Today I have to do.....",
         todos: todos.concat({
           id: this.id++,
           text: input,
           isChecked: false
-        })
+        }),
       })
     }
-    if (isItemListOpen === true) {
+    if (isValid && isItemListOpen === true) {
       this.toggleItemList()
     } else {
       return false
@@ -136,7 +140,7 @@ class TodoListTemplate extends Component {
 
   render() {
     console.log('state', this.state);
-    const { input, todos, isDeleteModalOpen, isItemListOpen } = this.state;
+    const { input, todos, isDeleteModalOpen, isItemListOpen, placeholder } = this.state;
     return (
       <Fragment>
         <TodoListTemplatePanel>
@@ -149,6 +153,7 @@ class TodoListTemplate extends Component {
               onChange={this.handleChange}
               onCreate={this.createAction}
               onKeyPress={this.handleKeyPress}
+              placeholder={placeholder}
             />
           </div>
           <div className='children-wrapper'>
