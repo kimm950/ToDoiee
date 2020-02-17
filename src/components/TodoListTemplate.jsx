@@ -134,7 +134,7 @@ class TodoListTemplate extends Component {
   }
 
   render() {
-    const { input, todos, isDeleteModalOpen, isItemListOpen, placeholder } = this.state;
+    const { input, todos, isDeleteModalOpen, isItemListOpen, placeholder, deleteId } = this.state;
     return (
       <Fragment>
         <TodoListTemplatePanel>
@@ -157,7 +157,7 @@ class TodoListTemplate extends Component {
                 <div>
                   <ItemList
                     todos={todos}
-                    deleteId={this.state.deleteId}
+                    deleteId={deleteId}
                     onToggle={this.handleCheckMark}
                     onDelete={() => this.toggleDeleteModal}
                   />
@@ -169,7 +169,7 @@ class TodoListTemplate extends Component {
         </TodoListTemplatePanel>
         {isDeleteModalOpen && (
           <DeleteModal
-            deleteId={this.state.deleteId}
+            deleteId={deleteId}
             onCancel={this.toggleDeleteModal}
             onConfirm={this.deleteAction}
           />
