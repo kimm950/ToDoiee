@@ -49,6 +49,17 @@ const TodoListTemplatePanel = styled.div`
     }
   }
 `
+
+if (localStorage.todos === 0 || localStorage.todos === undefined) {
+  localStorage.setItem('todos', JSON.stringify([
+    {
+      id: 1,
+      text: 'what to do',
+      isChecked: false,
+    }
+  ]));
+}
+
 class TodoListTemplate extends Component {
   id = 3;
   constructor(props) {
@@ -60,7 +71,7 @@ class TodoListTemplate extends Component {
       isItemListOpen: true,
       deleteId: null,
       placeholder: "Today I have to do.....",
-      todos: []
+      todos: JSON.parse(localStorage.todos)
     }
   }
 
@@ -135,6 +146,7 @@ class TodoListTemplate extends Component {
 
   render() {
     const { input, todos, isDeleteModalOpen, isItemListOpen, placeholder, deleteId } = this.state;
+    localStorage.setItem('todos', JSON.stringify(todos));
     return (
       <Fragment>
         <TodoListTemplatePanel>
