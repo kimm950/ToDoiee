@@ -176,7 +176,8 @@ class TodoListTemplate extends Component {
                   <div className='toggle-list' onClick={this.toggleItemList}> Close &#9650; </div>
                 </div>
 
-              )}
+              )
+            }
           </div>
         </TodoListTemplatePanel>
         {isDeleteModalOpen && (

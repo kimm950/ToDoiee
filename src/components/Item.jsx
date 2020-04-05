@@ -9,7 +9,7 @@ const ItemContainer = styled.div`
   transition: all 0.2s;
   user-select: none;
   border-bottom: 1px dashed rgba(51,51,51,0.1);
-  &:hover{
+  &:hover {
     background-color: ${colors.main};
     color: ${colors.white};
   }
@@ -22,6 +22,11 @@ const ItemContainer = styled.div`
     color: ${colors.white};
     flex: 1;
     margin-right: 10px;
+    transition: all .2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
   }
 
 &:hover .delete-button {

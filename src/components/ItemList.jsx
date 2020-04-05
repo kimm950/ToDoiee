@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Item from './Item'
 
 const ItemListContainer = styled.div`
-
 `
 
 class ItemList extends Component {
