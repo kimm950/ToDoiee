@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const DarkOverlay = styled.div`
@@ -11,18 +11,14 @@ const DarkOverlay = styled.div`
   z-index: 100;
 `
 
+const ModalPortal = ({ children, zIndex }) => {
 
-class ModalPortal extends Component {
-
-  render() {
-    const { children, zIndex } = this.props
-    return (
-      <div>
-        <DarkOverlay zIndex={zIndex} />
-        {children}
-      </div>
-    )
-  }
+  return (
+    <div>
+      <DarkOverlay zIndex={zIndex} />
+      {children}
+    </div>
+  )
 }
 
 export default ModalPortal

@@ -4,6 +4,7 @@ import Form from './Form'
 import ItemList from './ItemList'
 import DeleteModal from './DeleteModal'
 import colors from './colors'
+import { hoverCss, centerFlex } from './mixins'
 
 const TodoListTemplatePanel = styled.div`
   width: 30vw;
@@ -15,12 +16,9 @@ const TodoListTemplatePanel = styled.div`
   background-color: ${colors.white};
 
   .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${centerFlex}
     height: 10vh;
     font-weight: bold;
-    font-family: Helvetica;
     font-size: 24px;
     background-color: ${colors.main};
     color: ${colors.white};
@@ -39,13 +37,12 @@ const TodoListTemplatePanel = styled.div`
   }
 
   .toggle-list {
-    justify-content: center;
-    text-align: center;
-    color: ${colors.main} ;
+    ${centerFlex}
+    color: ${colors.main};
     padding: 10px;
     font-weight: bold;
     &:hover {
-      cursor: pointer;
+     ${hoverCss}
     }
   }
 `
@@ -128,19 +125,20 @@ class TodoListTemplate extends Component {
 
   // toggle DeleteModal
   toggleDeleteModal = (id) => {
+    const { deleteId, isDeleteModalOpen } = this.state
     this.setState({
-      deleteId: this.state.deleteId ? null : id,
-      isDeleteModalOpen: !this.state.isDeleteModalOpen,
+      deleteId: deleteId ? null : id,
+      isDeleteModalOpen: !isDeleteModalOpen,
     })
   }
   //toggle ItemList
   toggleItemList = () => { this.setState({ isItemListOpen: !this.state.isItemListOpen }) }
 
   deleteAction = (id) => {
-    const { todos } = this.state;
+    const { todos, isDeleteModalOpen } = this.state;
     this.setState({
       todos: todos.filter(todo => todo.id !== id),
-      isDeleteModalOpen: !this.state.isDeleteModalOpen,
+      isDeleteModalOpen: !isDeleteModalOpen,
     });
   }
 

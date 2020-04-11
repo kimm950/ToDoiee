@@ -1,33 +1,24 @@
-import React, { Component, Fragment } from "react"
-import styled from 'styled-components'
+import React, { Fragment } from 'react'
 import Item from './Item'
 
-const ItemListContainer = styled.div`
-`
-
-class ItemList extends Component {
-
-  render() {
-    const { todos, onToggle, onDelete } = this.props;
-    return (
-      <Fragment>
-        <ItemListContainer>
-          {todos.map(
-            ({ id, text, isChecked }) => (
-              <Item
-                id={id}
-                text={text}
-                isChecked={isChecked}
-                onToggle={onToggle}
-                onDelete={onDelete(id)}
-                key={id}
-              />
-            )
-          )}
-        </ItemListContainer>
-      </Fragment>
-    );
-  }
+const ItemList = ({ todos, onToggle, onDelete }) => {
+  return (
+    <Fragment>
+      {todos.map(
+        ({ id, text, isChecked }) => (
+          <Item
+            id={id}
+            text={text}
+            isChecked={isChecked}
+            onToggle={onToggle}
+            onDelete={onDelete(id)}
+            key={id}
+          />
+        )
+      )}
+    </Fragment>
+  );
 }
+
 
 export default ItemList;

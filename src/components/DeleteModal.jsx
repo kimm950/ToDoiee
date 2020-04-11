@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from './colors';
 import ModalPortal from './ModalPortal'
+import { hoverCss, centerFlex } from './mixins'
 
 const ModalContainer = styled.div`
   width: 30vw;
@@ -11,21 +12,22 @@ const ModalContainer = styled.div`
   border-radius: ${colors.radius};
   padding: 20px;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   position: absolute;
   z-index: 100;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: ${props => (props.overFlow ? 'auto' : 'unset')};
 
   > h2 {
+    text-align: center;
     margin: 30px 0px 50px 0px;
     color: ${colors.main};
   }
+`
+const ButtonWrapper = styled.div`
+  ${centerFlex}
 
-  > button {
+   > button {
       background: ${colors.main};
       color: ${colors.white};
       border-style: none;
@@ -34,11 +36,11 @@ const ModalContainer = styled.div`
       height: 40px;
       margin-right: 10px;
       box-shadow: ${colors.drop_shadow};
+      
       &:hover {
-        cursor: pointer;
-        box-shadow: none;
+        ${hoverCss}
       }
-    } 
+   }
 `
 
 const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
@@ -46,8 +48,10 @@ const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
     <ModalPortal>
       <ModalContainer>
         <h2>Are You Sure?</h2>
-        <button onClick={() => onCancel()}>Cancel</button>
-        <button onClick={() => onConfirm(deleteId)}>Yes</button>
+        <ButtonWrapper>
+          <button onClick={() => onCancel()}>Cancel</button>
+          <button onClick={() => onConfirm(deleteId)}>Yes</button>
+        </ButtonWrapper>
       </ModalContainer>
     </ModalPortal>
   );

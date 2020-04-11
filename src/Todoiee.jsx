@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import TodoListTemplate from './components/TodoListTemplate'
-import colors from '../src/components/colors'
+import colors from './components/colors'
+import { hoverCss } from './components/mixins'
 
 const Background = styled.div`
   display: block;
@@ -10,9 +11,9 @@ const Background = styled.div`
   height: 100%;
   overflow: auto;
 `
-const AboutMeButton = styled.a`
+const Button = styled.a`
   display: block;
-  position: fixed;
+  position: absolute;
   text-align: center;
   bottom: 0;
   right: 0;
@@ -24,25 +25,24 @@ const AboutMeButton = styled.a`
   box-shadow: ${colors.drop_shadow};
   text-decoration: none;
   color: ${colors.white};
+
   &:visited {
     text-decoration: none;
     }
+    
   &:hover{
-    cursor: pointer;
-    box-shadow: none;
+    ${hoverCss}
     transform: scale(1.1);
   }
 `
 
-class Todoiee extends Component {
-  render() {
-    return (
-      <Background>
-        <TodoListTemplate />
-        <AboutMeButton href='http://www.linkedin.com/in/hyun-sung-kim-67ab65128/' target="_blank">About Me</AboutMeButton>
-      </Background>
-    );
-  }
+const Todoiee = () => {
+  return (
+    <Background>
+      <TodoListTemplate />
+      <Button href='http://www.linkedin.com/in/hyun-sung-kim-67ab65128/' target="_blank">About Me</Button>
+    </Background>
+  );
 }
 
 export default Todoiee;

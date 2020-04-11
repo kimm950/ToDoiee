@@ -1,19 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import colors from './colors'
+import { hoverCss } from './mixins'
 
 const FormContainer = styled.div`
   display: flex;
   height: 8vh;
 
-  .todo-input{
+  .todo-input {
     flex: 1;
     border-style: none;
     padding-left: 10px;
     margin-right: 8px;
     font-size: 18px;
 }
-  .create-button{
+  .create-button {
     background-color: ${colors.main};
     color: ${colors.white};
     border-style: none;
@@ -22,12 +23,11 @@ const FormContainer = styled.div`
     box-shadow: ${colors.drop_shadow};
     font-size: 18px;
     transition: all 0.2s;
-    &:hover{
+    &:hover {
+      ${hoverCss}
       background-color: ${colors.white};
       color: ${colors.main};
-      box-shadow: none;
       border: 0.5px solid;
-      cursor: pointer;
     }
   }
 `
@@ -42,7 +42,8 @@ const Form = ({ value, onChange, onCreate, onKeyPress, placeholder }) => {
         onChange={onChange}
         onKeyPress={onKeyPress}
       />
-      <button className="create-button"
+      <button
+        className="create-button"
         onClick={onCreate}>
         Add
       </button>
