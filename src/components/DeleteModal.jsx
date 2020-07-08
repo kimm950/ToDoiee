@@ -7,6 +7,7 @@ import { hoverCss, centerFlex } from './mixins'
 const ModalContainer = styled.div`
   width: 30vw;
   height: 20vh;
+  min-width: 200px;
   background-color: ${colors.white};
   box-shadow: ${colors.drop_shadow};
   border-radius: ${colors.radius};
@@ -26,8 +27,12 @@ const ModalContainer = styled.div`
 `
 const ButtonWrapper = styled.div`
   ${centerFlex}
-
-   > button {
+  .cancel {
+    background: ${colors.white};
+    color: ${colors.main};
+    border: 1px solid  ${colors.main};
+    }
+    button {
       background: ${colors.main};
       color: ${colors.white};
       border-style: none;
@@ -49,7 +54,7 @@ const DeleteModal = ({ deleteId, onCancel, onConfirm }) => {
       <ModalContainer>
         <h2>Are You Sure?</h2>
         <ButtonWrapper>
-          <button onClick={() => onCancel()}>Cancel</button>
+          <button className='cancel' onClick={() => onCancel()}>Cancel</button>
           <button onClick={() => onConfirm(deleteId)}>Yes</button>
         </ButtonWrapper>
       </ModalContainer>
